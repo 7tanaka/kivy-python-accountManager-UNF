@@ -1,0 +1,78 @@
+#:kivy 1.0.9 
+MDScreen:
+    name: "main"
+    MDFloatLayout:
+        md_bg_color: 74/255, 74/255, 76/255, 1
+        Image:
+            source: "assets/Images/logo.png"
+            size_hint: .10, .10
+            pos_hint:{"center_x": .10, "center_y": .95}
+        Image:
+            id: gif
+            source: "assets/Images/logoMain1.gif"
+            size_hint: .4, .4
+            pos_hint: {"center_x": .5, "center_y": .6}
+            anim_delay: 0
+            keep_data: True
+            canvas.before:
+                Color:
+                    rgb: 1, 1, 1, 1
+                Rectangle:
+                    size: 200, 200
+                    pos: 75,255
+        MDLabel:
+            text: "UPLOCK"
+            pos_hint: {"center_x": .5, "center_y": .37}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 215/255, 215/255, 0, 1
+            font_size: "35sp"
+            font_name: "ranger"
+        MDLabel:
+            text: "ACCOUNT MANAGEMENT AND SECURITY"
+            pos_hint: {"center_x": .5, "center_y": .32}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 215/255, 215/255, 0, 1
+            font_size: "15sp"
+            font_name: "stud"
+
+        Button:  
+            text: "LOGIN"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .18}
+            background_color: 0,0,0,0
+            font_name: "stud"
+            font_size: "30sp"
+            color: 74/255, 74/255, 76/255, 1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "login"
+            canvas.before:
+                Color:
+                    rgb: rgba(215,215,0,1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]
+
+        Button: 
+            text: "SIGNUP"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .09}
+            background_color: 0,0,0,0
+            font_name: "stud"
+            font_size: "30sp"
+            color:  215/255, 215/255, 0, 1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "signup"
+            canvas.before:
+                Color:
+                    rgb: rgba(215,215,0,1)
+                Line:
+                    width: 1.2
+                    rounded_rectangle: self.x, self.y, self.width, self.height, 5, 5, 5, 5, 100
+    
+            
+                    

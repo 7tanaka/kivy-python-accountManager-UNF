@@ -1,0 +1,384 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+MDScreen:
+    name: "mainPanel"
+    on_enter: 
+        app.recNotes(username1)
+    MDFloatLayout:
+        ScreenManager:
+            
+            id: screen_manager
+            transition: NoTransition()
+            Screen:
+                name: "home"
+                MDFloatLayout:
+                    md_bg_color: 1,1,1,1
+                
+                   
+                Button:
+                    
+                    size_hint: .25, .15
+                    pos_hint: {"center_x":.8, "center_y": .90}
+                    background_normal: 'assets/Images/sample2.png'
+                    background_down:  'assets/Images/sample2a.png'
+                    on_release:
+                        nav_drawer.set_state("open")
+                   
+                MDLabel:
+                    text: "Welcome!"
+                    pos_hint: {"center_x": .6, "center_y": .80}
+                    font_size: "40sp"
+                    font_name: "Theo"
+                    color: rgba(74,74,76,1)
+                    theme_text_color: "Custom"
+                MDLabel:
+                    text: "UPLOCK"
+                    pos_hint: {"center_x": .6, "center_y": .74}
+                    font_size: "30sp"
+                    font_name: "stud"
+                    color: rgba(74,74,76,1)
+                    theme_text_color: "Custom"
+
+            Screen:
+                name: "eznotes"
+                MDLabel:
+                    text: "Ez Notes"
+                    pos_hint: {"center_x": .62, "center_y": .89}
+                    font_size: "40sp"
+                    font_name: "Theo"
+                    color: rgba(74,74,76,1)
+                    theme_text_color: "Custom"
+                Button:
+                    
+                    size_hint: .25, .15
+                    pos_hint: {"center_x":.8, "center_y": .90}
+                    background_normal: 'assets/Images/sample2.png'
+                    background_down:  'assets/Images/sample2a.png'
+                    on_release:
+                        nav_drawer.set_state("open")
+
+
+                #!! FEATURE NAVIGATOR
+                NavBar:
+                    size_hint: .6, .1
+                    pos_hint: {"center_x": .5, "center_y": .075}
+                    elevation: 10
+                    md_bg_color: 214/255, 214/255, 0, 1
+                    radius: [16]
+                    MDGridLayout:
+                        cols: 3
+                        spacing: 7
+                        size_hint_x: .5
+                        pos_hint: {"center_x": .35, "center_y": .5}
+                        MDIconButton:
+                            id: nav_icon1
+                            icon: "magnify" 
+                            ripple_scale: 0
+                            user_font_size: "30sp"
+                            theme_text_color: "Custom"
+                            text_color: 74/255, 74/255, 76/255, 1
+                            on_release:
+                                screen_manager.current = 'viewNotes'
+                                app.recNotes(username1)
+                        MDIconButton:
+                            id: nav_icon2
+                            icon: "plus" 
+                            ripple_scale: 0
+                            user_font_size: "30sp"
+                            theme_text_color: "Custom"
+                            text_color: 74/255, 74/255, 76/255, 1
+                            on_release:
+                              
+                                screen_manager.current = "createNote"
+
+                        MDIconButton:
+                            id: nav_icon3
+                            icon: "delete" 
+                            ripple_scale: 0
+                            user_font_size: "30sp"
+                            theme_text_color: "Custom"
+                            text_color: 74/255, 74/255, 76/255, 1
+                            on_release:
+                                
+                                screen_manager.current = "accountslist"
+
+            Screen:
+                name: 'viewNotes'
+                on_enter: 
+                    app.recNotes(username1)
+                MDLabel:
+                    text: "Ez Notes"
+                    pos_hint: {"center_x": .62, "center_y": .89}
+                    font_size: "40sp"
+                    font_name: "Theo"
+                    color: rgba(74,74,76,1)
+                    theme_text_color: "Custom"
+                Button: 
+                    size_hint: .25, .15
+                    pos_hint: {"center_x":.8, "center_y": .90}
+                    background_normal: 'assets/Images/sample2.png'
+                    background_down:  'assets/Images/sample2a.png'
+                    on_release:
+                        nav_drawer.set_state("open")
+
+
+
+            Screen:
+                name: 'createNote'
+                MDLabel:
+                    text: "Ez Notes"
+                    pos_hint: {"center_x": .62, "center_y": .89}
+                    font_size: "40sp"
+                    font_name: "Theo"
+                    color: rgba(74,74,76,1)
+                    theme_text_color: "Custom"
+                Button: 
+                    size_hint: .25, .15
+                    pos_hint: {"center_x":.8, "center_y": .90}
+                    background_normal: 'assets/Images/sample2.png'
+                    background_down:  'assets/Images/sample2a.png'
+                    on_release:
+                        nav_drawer.set_state("open")
+                MDFloatLayout: #! Title
+                    size_hint: .93 , .07
+                    pos_hint: {"center_x": .5, "center_y": .77}
+                    TextInput:
+                        id: title
+                        hint_text: "Title"
+                        font_name: "louis"
+                        size_hint_y: .75
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        background_color: 1, 1, 1, 0
+                        foreground_color: rgba(74,74,76,255)
+                        cursor_color: rgba(74,74,76,255)
+                        font_size: "17sp"
+                        cursor_width: "2sp"
+                        multiline: True
+                       
+                    MDFloatLayout:
+                        pos_hint: {"center_x": .5, "center_y": 0}
+                        size_hint_y: .03
+                        md_bg_color: rgba(215, 215, 0, 255)
+
+                MDFloatLayout: #! SUBJECT
+                    size_hint: .93 , .07
+                    pos_hint: {"center_x": .5, "center_y": .67}
+                    TextInput:
+                        id: subject
+                        hint_text: "Subject"
+                        font_name: "louis"
+                        size_hint_y: .75
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        background_color: 1, 1, 1, 0
+                        foreground_color: rgba(74,74,76,255)
+                        cursor_color: rgba(74,74,76,255)
+                        font_size: "17sp"
+                        cursor_width: "2sp"
+                        multiline: True
+                     
+                    MDFloatLayout:
+                        pos_hint: {"center_x": .5, "center_y": 0}
+                        size_hint_y: .03
+                        md_bg_color: rgba(215, 215, 0, 255)
+
+                MDFloatLayout: #! CONTENT
+                    size_hint: .93 , .07
+                    pos_hint: {"center_x": .5, "center_y": .41}
+                    TextInput:
+                        id: content
+                        hint_text: "Content"
+                        font_name: "louis"
+                        size_hint_y: 5.5
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        background_color: 215,215,0,1
+                        foreground_color: rgba(74, 74, 76, 255)
+                        cursor_color: rgba(74,74,76,255)
+                        font_size: "17sp"
+                        cursor_width: "2sp"
+                        multiline: True
+                   
+                Button:  
+                    text: "SAVE"
+                    size_hint: .66, .065
+                    pos_hint: {"center_x": .5, "center_y": .175}
+                    background_color: 0,0,0,0
+                    font_name: "stud"
+                    font_size: "30sp"
+                    color: 74/255, 74/255, 76/255, 1
+                    on_release: 
+                        app.createNotes(username1, title,subject,content)
+                    canvas.before:
+                        Color:
+                            rgb: rgba(215,215,0,1)
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [5]
+
+                #!! FEATURE NAVIGATOR
+                NavBar:
+                    size_hint: .6, .1
+                    pos_hint: {"center_x": .5, "center_y": .075}
+                    elevation: 10
+                    md_bg_color: 214/255, 214/255, 0, 1
+                    radius: [16]
+                    MDGridLayout:
+                        cols: 3
+                        spacing: 7
+                        size_hint_x: .5
+                        pos_hint: {"center_x": .35, "center_y": .5}
+                        MDIconButton:
+                            id: nav_icon1
+                            icon: "magnify" 
+                            ripple_scale: 0
+                            user_font_size: "30sp"
+                            theme_text_color: "Custom"
+                            text_color: 74/255, 74/255, 76/255, 1
+                            on_release:
+                                screen_manager.current = "viewNotes"
+                        MDIconButton:
+                            id: nav_icon2
+                            icon: "plus" 
+                            ripple_scale: 0
+                            user_font_size: "30sp"
+                            theme_text_color: "Custom"
+                            text_color: 74/255, 74/255, 76/255, 1
+                            on_release:
+                                nav_drawer.set_state("close")
+                                screen_manager.current = "accountslist"
+
+                        MDIconButton:
+                            id: nav_icon3
+                            icon: "delete" 
+                            ripple_scale: 0
+                            user_font_size: "30sp"
+                            theme_text_color: "Custom"
+                            text_color: 74/255, 74/255, 76/255, 1
+                            on_release:
+                                nav_drawer.set_state("close")
+                                screen_manager.current = "accountslist"
+
+                        
+                   
+
+            Screen:
+                name: "accountslist"
+                MDLabel:
+                    text: "this is screen accountslist"
+                    halign: "center"
+                Button:
+                    
+                    size_hint: .25, .15
+                    pos_hint: {"center_x":.8, "center_y": .90}
+                    background_normal: 'assets/Images/sample2.png'
+                    background_down:  'assets/Images/sample2a.png'
+                    on_release:
+                        nav_drawer.set_state("open")
+                   
+            Screen:
+                name: "passgen"
+                MDLabel:
+                    text: "this is screen passgen"
+                    halign: "center"
+                Button:
+                    
+                    size_hint: .25, .15
+                    pos_hint: {"center_x":.8, "center_y": .90}
+                    background_normal: 'assets/Images/sample2.png'
+                    background_down:  'assets/Images/sample2a.png'
+                    on_release:
+                        nav_drawer.set_state("open")
+                   
+
+            Screen:
+                name: "settings"
+                MDLabel:
+                    text: "this is screen settings"
+                    halign: "center"
+                Button:
+                    
+                    size_hint: .25, .15
+                    pos_hint: {"center_x":.8, "center_y": .90}
+                    background_normal: 'assets/Images/sample2.png'
+                    background_down:  'assets/Images/sample2a.png'
+                    on_release:
+                        nav_drawer.set_state("open")
+                   
+
+        
+                        
+                           
+
+
+        #!!! THE DRAWER ################################################################################################
+        MDNavigationDrawer:
+            id: nav_drawer
+            width: 270
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '8dp'
+                padding: '8dp'
+
+                Image:
+                    source: 'assets/Images/logo.png'
+                MDLabel:
+                    id: username1
+                    text: '7tanaka'
+                    font_name : 'louis'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                   
+                MDLabel:
+                    id: email1
+                    text: '@gmail.com'
+                    font_name : 'louis'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                ScrollView:
+                    MDList:
+                        OneLineIconListItem:
+                            text: 'eznotes'
+                            on_release:
+                                nav_drawer.set_state("close")
+                                root.manager.transition.direction = "right"
+                                screen_manager.current = "eznotes"
+                            IconLeftWidget:
+                                icon:  "notebook-edit-outline" 
+                        OneLineIconListItem:
+                            text: 'Accounts'
+                            on_release:
+                                nav_drawer.set_state("close")
+                                root.manager.transition.direction = "right"
+                                screen_manager.current = "accountslist"
+                            IconLeftWidget:
+                                icon:  "card-account-details-outline" 
+
+                        OneLineIconListItem:
+                            text: 'Password Generator'
+                            on_release:
+                                nav_drawer.set_state("close")
+                                root.manager.transition.direction = "right"
+                                screen_manager.current = "passgen"
+                            IconLeftWidget:
+                                icon:  "form-textbox-password"
+
+                        OneLineIconListItem:
+                            text: 'Settings'
+                            on_release:
+                                nav_drawer.set_state("close")
+                                root.manager.transition.direction = "right"
+                                screen_manager.current = "settings"
+                            IconLeftWidget:
+                                icon:  "cog-outline"
+                        OneLineIconListItem:
+                            text: 'Logout'
+                            on_release:
+                                nav_drawer.set_state("close")
+                                root.manager.transition.direction = "right"
+                                root.manager.current = "main"
+                            IconLeftWidget:
+                                icon:  "logout"   
+
+        
+        
+            

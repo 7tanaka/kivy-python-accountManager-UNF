@@ -1,0 +1,118 @@
+#:kivy 1.0.9 
+MDScreen:
+    name: "login"
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24,58, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "main"
+        MDLabel:
+            text: "Welcome!"
+            pos_hint: {"center_x": .6, "center_y": .80}
+            font_size: "40sp"
+            font_name: "Theo"
+            color: rgba(74,74,76,1)
+            theme_text_color: "Custom"
+        MDLabel:
+            text: "Sign in to continue"
+            pos_hint: {"center_x": .6, "center_y": .74}
+            font_size: "30sp"
+            font_name: "stud"
+            color: rgba(74,74,76,1)
+            theme_text_color: "Custom"
+
+        MDFloatLayout: #! USERNAME INPUT
+            size_hint: .7 , .07
+            pos_hint: {"center_x": .5, "center_y": .6}
+            TextInput:
+                id: email
+                hint_text: "EMAIL"
+                font_name: "louis"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43, "center_y": .5}
+                background_color: 1, 1, 1, 0
+                foreground_color: rgba(74,74,76,255)
+                cursor_color: rgba(74,74,76,255)
+                font_size: "17sp"
+                cursor_width: "2sp"
+                multiline: False
+            MDFloatLayout:
+                pos_hint: {"center_x": .45, "center_y": 0}
+                size_hint_y: .03
+                md_bg_color: rgba(215, 215, 0, 255)
+
+        MDFloatLayout: #! PASSWORD INPUT
+            size_hint: .7 , .07
+            pos_hint: {"center_x": .5, "center_y": .45}
+            TextInput:
+                id: password
+                hint_text: "PASSWORD"
+                font_name: "louis"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43, "center_y": .5}
+                background_color: 1, 1, 1, 0
+                foreground_color: rgba(74,74,76,255)
+                cursor_color: rgba(74,74,76,255)
+                font_size: "17sp"
+                cursor_width: "2sp"
+                multiline: False
+                password: True
+            Button:
+                size_hint: .05, .125
+                pos_hint: {"center_x": .90, "center_y": .5}
+                background_normal: "assets/Images/new.png"
+                background_down: "assets/Images/seen.png"
+                on_press: app.toggle_visibility(password)
+            MDFloatLayout:
+                pos_hint: {"center_x": .45, "center_y": 0}
+                size_hint_y: .03
+                md_bg_color: rgba(215, 215, 0, 255)
+
+        Button:  
+            text: "LOGIN"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .47, "center_y": .30}
+            background_color: 0,0,0,0
+            font_name: "stud"
+            font_size: "30sp"
+            color: 74/255, 74/255, 76/255, 1
+            on_release: 
+                #! CREATING A CONDITIONAL STATEMENT FOR AUTHENTICATION PURPOSES
+                if app.current_user(email,password)[0] == True: root.manager.current = "mainPanel"
+                
+            canvas.before:
+                Color:
+                    rgb: rgba(215,215,0,1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]
+
+
+        MDTextButton:
+            text: "Forgot Password? "
+            pos_hint: {"center_x": .5, "center_y": .24}
+            color: rgba(74,74,76,255)
+            font_size: "15sp"
+            font_name: "stud"
+        MDLabel: 
+            text: "Don't have an account?"
+            font_name: "stud"
+            font_size: "15sp"
+            pos_hint: {"center_x": .68, "center_y": .15}
+            color: rgba(74,74,76,255)
+        MDTextButton: 
+            text: "SIGN UP"
+            font_name: "stud"
+            font_size: "15sp"
+            pos_hint: {"center_x": .68, "center_y": .15}
+            color: rgba(74,74,76,255)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "signup"
+            

@@ -1,0 +1,183 @@
+#kivy 1.0.9 
+# <Content>
+    
+#     ScrollView:
+#         MDList:
+#             OneLineIconListItem:
+#                 text: 'Ez Notes'
+#                 on_release:
+#                     root.nav_drawer.set.state("close")
+#                     root.manager.current = "eznotes"
+#                 IconLeftWidget:
+#                     icon:  "notebook-edit-outline"  
+                
+#             OneLineIconListItem:
+#                 text: 'Accounts'
+#                 on_release:
+#                     root.nav_drawer.set.state('close')
+#                     root.manager.current = "accountslist"
+#                 IconLeftWidget:
+#                     icon:  "card-account-details-outline"
+                
+#             OneLineIconListItem:
+#                 text: 'Password Generator'
+#                 on_release:
+#                     root.nav_drawer.set.state('close')
+#                     root.manager.current = "passgen"
+#                 IconLeftWidget:
+#                     icon:  "form-textbox-password"
+#             OneLineIconListItem:
+#                 text: 'Logout'
+#                 on_release:
+#                     root.nav_drawer.set.state('close')
+#                     root.manager.transition.direction = "left"
+#                     root.manager.current = "main"
+#                 IconLeftWidget:
+#                     icon:  "logout"  
+MDScreen:
+    name: "mainPanel1a"
+    MDNavigationLayout:
+        MDNavigationDrawer:
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '8dp'
+                padding: '8dp'
+
+                Image:
+                    source: 'assets/Images/shadyMe.png'
+                MDLabel:
+                    text: '7tanaka'
+                    font_name : 'louis'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: '7tanaka@gmail.com'
+                    font_name : 'louis'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                ScrollView:
+                    MDList:
+                        OneLineIconListItem:
+                            text: 'Ez Notes'
+                            on_release:
+                                
+                                root.manager.current = "eznotes"
+                            IconLeftWidget:
+                                icon:  "notebook-edit-outline"  
+                            
+                        OneLineIconListItem:
+                            text: 'Accounts'
+                            on_release:
+                                
+                                root.manager.current = "accountslist"
+                            IconLeftWidget:
+                                icon:  "card-account-details-outline"
+                            
+                        OneLineIconListItem:
+                            text: 'Password Generator'
+                            on_release:
+                                
+                                root.manager.current = "passgen"
+                            IconLeftWidget:
+                                icon:  "form-textbox-password"
+                        OneLineIconListItem:
+                            text: 'Settings'
+                            on_release:
+                               
+                                
+                                root.manager.current = "Settings"
+                            IconLeftWidget:
+                                icon:   "account-settings-outline"
+                        OneLineIconListItem:
+                            text: 'Logout'
+                            on_release:
+                               
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "main"
+                            IconLeftWidget:
+                                icon:  "logout"    
+        
+        # ScreenManager:
+        #     Screen:
+        #         BoxLayout:
+        #             orientation: 'vertical'
+        #             MDToolbar:
+        #                 pos_hint: {"top":1}
+        #                 title: 'Demo Application'
+        #                 elevation: 8
+        #                 left_action_items: [["menu", lambda x: OneLineIconListItem.nav_drawer.set_state("open")]]
+                
+        #     Content:
+        #         manager: manager
+        #         nav_drawer: nav_drawer
+
+        
+
+        # MDNavigationLayout:
+        #     ScreenManager:
+        #         id: screen_manager
+        #         Screen:
+        #             name: "eznotes"
+        #             MDLabel:
+        #                 text: "this is screen 1"
+        #                 halign: "center"
+        #         Screen:
+        #             name: "passgen"
+        #             MDLabel:
+        #                 text: "this is screen passgen"
+        #                 halign: "center"
+
+            # BoxLayout:
+            #     orientation: 'vertical'
+            #     spacing: '8dp'
+            #     padding: '8dp'
+
+            #     Image:
+            #         source: 'assets/Images/shadyMe.png'
+            #     MDLabel:
+            #         text: '7tanaka'
+            #         font_name : 'louis'
+            #         size_hint_y: None
+            #         height: self.texture_size[1]
+            #     MDLabel:
+            #         text: '7tanaka@gmail.com'
+            #         font_name : 'louis'
+            #         size_hint_y: None
+            #         height: self.texture_size[1]
+
+            #     ScrollView:
+            #         MDList:
+            #             OneLineIconListItem:
+            #                 text: 'Ez Notes'
+            #                 on_release:
+            #                     root.nav_drawer.set.state("close")
+            #                     root.manager.current = "eznotes"
+            #                 IconLeftWidget:
+            #                     icon:  "notebook-edit-outline"  
+                            
+            #             OneLineIconListItem:
+            #                 text: 'Accounts'
+            #                 on_release:
+            #                     root.nav_drawer.set.state('close')
+            #                     root.manager.current = "accountslist"
+            #                 IconLeftWidget:
+            #                     icon:  "card-account-details-outline"
+                            
+            #             OneLineIconListItem:
+            #                 text: 'Password Generator'
+            #                 on_release:
+            #                     root.nav_drawer.set.state('close')
+            #                     root.manager.current = "passgen"
+            #                 IconLeftWidget:
+            #                     icon:  "form-textbox-password"
+            #             OneLineIconListItem:
+            #                 text: 'Logout'
+            #                 on_release:
+            #                     root.nav_drawer.set.state('close')
+            #                     root.manager.transition.direction = "left"
+            #                     root.manager.current = "main"
+            #                 IconLeftWidget:
+            #                     icon:  "logout"  
+                               
+                               
